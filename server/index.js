@@ -27,6 +27,6 @@ app.use("/api/auth", authRoutes); // Creating endpoint for auth-related API call
 app.use("/api/user", userRoutes); // Creating endpoint for user-related API calls 
 app.use("/api/face", faceRoutes); // Creating endpoint for face-related API calls
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
 });
