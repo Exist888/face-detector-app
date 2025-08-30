@@ -6,6 +6,9 @@ import faceRoutes from "./routes/faceRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const HOST = "0.0.0.0";
+
+console.log(`Starting server on host: ${HOST}, port: ${process.env.PORT}`);
 
 // Add a simple request logging middleware
 app.use((req, res, next) => {
@@ -27,6 +30,11 @@ app.use("/api/auth", authRoutes); // Creating endpoint for auth-related API call
 app.use("/api/user", userRoutes); // Creating endpoint for user-related API calls 
 app.use("/api/face", faceRoutes); // Creating endpoint for face-related API calls
 
-app.listen(PORT, "0.0.0.0", () => {
+// Temporary root health check
+app.get('/', (req, res) => {
+  res.send('Backend is alive!');
+});
+
+app.listen(PORT, HOST, () => {
     console.log(`Server running on port ${PORT}`);
 });
