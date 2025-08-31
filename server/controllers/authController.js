@@ -83,6 +83,7 @@ export async function handleSignUp(req, res) {
         }
     } catch (err) {
         console.error("Sign up error: ", err);
+        console.error("Stack trace: ", err.stack);
 
         if (err.message === "Email already registered") {
             return res.status(409).json({

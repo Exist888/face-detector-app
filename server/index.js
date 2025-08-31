@@ -4,8 +4,6 @@ import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import faceRoutes from "./routes/faceRoutes.js";
 
-console.log("ENVIRONMENT VARIABLES:", process.env); // Temporarily check env variables
-
 const app = express();
 const PORT = process.env.PORT || 5000;
 const HOST = "0.0.0.0";
