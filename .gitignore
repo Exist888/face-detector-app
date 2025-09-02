@@ -22,6 +22,9 @@ lerna-debug.log*
 .client/.vite
 .netlify/
 
+# Certs
+/server/certs
+
 # Build output for SSR
 dist-ssr
 *.local
