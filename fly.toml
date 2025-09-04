@@ -4,12 +4,12 @@
 #
 
 app = 'face-detector-app-backend'
-primary_region = 'ord'
+primary_region = 'sjc'
 
 [build]
 
 [http_service]
-  internal_port = 8080
+  internal_port = 5000
   force_https = true
   auto_stop_machines = 'stop'
   auto_start_machines = true
