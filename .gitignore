@@ -14,6 +14,7 @@ lerna-debug.log*
 
 # Supabase SSL Certificate
 /config/global-bundle.pem
+/config/cert-base64.txt
 
 # Node modules and builds
 /client/node_modules
