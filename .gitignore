@@ -12,6 +12,9 @@ lerna-debug.log*
 /server/.env
 /server/archive/.env
 
+# Supabase SSL Certificate
+/config/global-bundle.pem
+
 # Node modules and builds
 /client/node_modules
 /server/node_modules

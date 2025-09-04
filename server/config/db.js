@@ -1,19 +1,16 @@
 import knex from "knex";
 import dotenv from "dotenv";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from 'url';
 
 dotenv.config();
 
-// Get the current file path
-const __filename = fileURLToPath(import.meta.url);
+const base64Cert = process.env.SUPABASE_CA_BASE64;
 
-// Get the directory name
-const __dirname = path.dirname(__filename);
+if (!base64Cert) {
+    throw new Error("SUPABASE_CA_BASE64 environment variable is not set");
+}
 
-// Use SSL cert from Fly.io secrets, fallback to local file for dev
-const sslCert = process.env.SUPABASE_CA || fs.readFileSync(path.join(__dirname, "../certs/global-bundle.pem"), "utf-8");
+// Decode the Base64 string back to original cert text
+const sslCert = Buffer.from(base64Cert, "base64").toString("utf-8");
 
 const db = knex({
     client: "pg",
