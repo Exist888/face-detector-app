@@ -4,7 +4,7 @@
 #
 
 app = 'face-detector-app-backend'
-primary_region = 'ord'
+primary_region = 'sjc'
 
 [build]
 

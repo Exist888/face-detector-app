@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Use SSL cert from Fly.io secrets, fallback to local file for dev
-const sslCert = process.env.SUPABASE_CA || fs.readFileSync(path.join(__dirname, "./certs/global-bundle.pem"), "utf-8");
+const sslCert = process.env.SUPABASE_CA || fs.readFileSync(path.join(__dirname, "../certs/global-bundle.pem"), "utf-8");
 
 const db = knex({
     client: "pg",
