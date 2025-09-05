@@ -13,8 +13,8 @@ lerna-debug.log*
 /server/archive/.env
 
 # Supabase SSL Certificate
-/config/global-bundle.pem
-/config/cert-base64.txt
+/server/config/global-bundle.pem
+/server/config/cert-base64.txt
 
 # Node modules and builds
 /client/node_modules
@@ -25,9 +25,6 @@ lerna-debug.log*
 # Vite or Netlify artifacts
 .client/.vite
 .netlify/
-
-# Certs
-/server/certs
 
 # Build output for SSR
 dist-ssr

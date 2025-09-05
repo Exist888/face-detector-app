@@ -1,16 +1,12 @@
 import knex from "knex";
 import dotenv from "dotenv";
+import fs from "fs";
+import path from "path";
 
 dotenv.config();
 
-const base64Cert = process.env.SUPABASE_CA_BASE64;
-
-if (!base64Cert) {
-    throw new Error("SUPABASE_CA_BASE64 environment variable is not set");
-}
-
-// Decode the Base64 string back to original cert text
-const sslCert = Buffer.from(base64Cert, "base64").toString("utf-8");
+const sslCertPath = path.join(process.cwd(), "config", "global-bundle.pem");
+const sslCert = fs.readFileSync(sslCertPath, "utf-8");
 
 const db = knex({
     client: "pg",
