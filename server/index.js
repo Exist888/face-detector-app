@@ -22,7 +22,7 @@ const limiter = rateLimit({
     handler: (req, res) => {
         res.status(429).json({
             success: false,
-            error: "Too many requests. Please wait one minute, then try again."
+            error: "5 requests per minute max. Please wait one minute, then try again."
         });
     }
 });

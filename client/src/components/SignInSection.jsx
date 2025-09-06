@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { signInUser } from "../utils/signInUser.js"; 
+import { signInUser } from "../utils/signInUser.js";
 
 export function SignInSection({ onRouteChange, isSignedIn, setIsSignedIn, setUser }) {
     const [form, setForm] = useState({ email: "", password: ""});
@@ -32,8 +32,10 @@ export function SignInSection({ onRouteChange, isSignedIn, setIsSignedIn, setUse
                 setIsSignedIn(true);
                 setUser(result?.data || {});
                 onRouteChange("/home");
+            } else if (result.status === 429) {
+                setError(resut.error || "5 requests per minute max. Please wait one minute, then try again.");
             } else {
-                setError("Failed to sign in. Please try again.");
+                setError(result.error || "Failed to sign in. Please try again.");
             }
         } catch (err) {
             console.error("Error signing in: ", err);

@@ -32,6 +32,8 @@ export function SignUpSection({ onRouteChange, isSignedIn, setIsSignedIn, setUse
                 setIsSignedIn(true);
                 setUser(result?.data || {});
                 onRouteChange("/home");
+            } else if (result.status === 429) {
+                setError(resut.error || "5 requests per minute max. Please wait one minute, then try again.");
             } else {
                 console.error(result.error || "Sign up failed.");
                 if (result.status === 409) {
