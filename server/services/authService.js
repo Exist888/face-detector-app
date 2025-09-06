@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import db from "../config/db.js";
+import db from "../config/db.js"; // Knex instance
 
 const SALT_ROUNDS = 12;
 

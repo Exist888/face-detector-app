@@ -19,7 +19,7 @@ export async function handleFaceDetect(req, res) {
             return res.status(400).json({
                 success: false,
                 error: "Invalid image URL. Try again!"
-            });
+            }); 
         }
 
         // Call the service, pass in imageUrl, and store response in array
