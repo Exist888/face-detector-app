@@ -55,8 +55,7 @@ export async function callClarifaiApi(imageUrl) {
                 value: Number(concept.value.toFixed(4))
             }));
 
-            // Each face is an object that contains a bounding box with coordinates 
-            // and an array of concepts
+            // Each face is an object that contains a bounding box (with coordinates) and a nested objects array
             return {
                 boundingBox: {
                     topRow: Number(box.top_row.toFixed(3)),
