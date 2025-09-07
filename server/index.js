@@ -11,7 +11,7 @@ const HOST = "0.0.0.0";
 
 const allowedOrigins = [
     "http://localhost:5173",
-    "https://face-detector.netlify.app"
+    "https://face-detector-exist888.netlify.app"
 ]
 
 app.use(cors({ origin: allowedOrigins }));
