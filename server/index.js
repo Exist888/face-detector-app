@@ -16,8 +16,8 @@ const allowedOrigins = [
 
 app.use(cors({ origin: allowedOrigins }));
 
-// Rate limiter to be passed into all routes
-const limiter = rateLimit({
+// Limiter options to be passed into all routes
+const limiterOptions = {
     windowMs: 1 * 60 * 1000,
     max: 5,
     handler: (req, res) => {
@@ -26,15 +26,19 @@ const limiter = rateLimit({
             error: "5 requests per minute max. Please wait one minute, then try again."
         });
     }
-});
+};
+
+const authLimiter = rateLimit(limiterOptions);
+const userLimiter = rateLimit(limiterOptions);
+const faceLimiter = rateLimit(limiterOptions);
 
 // To parse JSON bodies
 app.use(express.json());
 
 // Creating endpoints for auth-related, user-related, and face-related API calls
-app.use("/api/auth", limiter, authRoutes);
-app.use("/api/user", limiter, userRoutes);
-app.use("/api/face", limiter, faceRoutes);
+app.use("/api/auth", authLimiter, authRoutes);
+app.use("/api/user", userLimiter, userRoutes);
+app.use("/api/face", faceLimiter, faceRoutes);
 
 app.listen(PORT, HOST, () => {
     console.log(`Server running on port ${PORT}`);
