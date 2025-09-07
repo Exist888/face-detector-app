@@ -33,7 +33,7 @@ export function SignInSection({ onRouteChange, isSignedIn, setIsSignedIn, setUse
                 setUser(result?.data || {});
                 onRouteChange("/home");
             } else if (result.status === 429) {
-                setError(resut.error || "5 requests per minute max. Please wait one minute, then try again.");
+                setError(result.error || "5 requests per minute max. Please wait one minute, then try again.");
             } else {
                 setError(result.error || "Failed to sign in. Please try again.");
             }

@@ -16,6 +16,7 @@ const allowedOrigins = [
 
 app.use(cors({ origin: allowedOrigins }));
 
+// Rate limiter to be passed into all routes
 const limiter = rateLimit({
     windowMs: 1 * 60 * 1000,
     max: 5,
@@ -30,13 +31,10 @@ const limiter = rateLimit({
 // To parse JSON bodies
 app.use(express.json());
 
-// Applying rate limiter to all routes
-app.use(limiter);
-
 // Creating endpoints for auth-related, user-related, and face-related API calls
-app.use("/api/auth", authRoutes);
-app.use("/api/user", userRoutes);
-app.use("/api/face", faceRoutes);
+app.use("/api/auth", limiter, authRoutes);
+app.use("/api/user", limiter, userRoutes);
+app.use("/api/face", limiter, faceRoutes);
 
 app.listen(PORT, HOST, () => {
     console.log(`Server running on port ${PORT}`);
